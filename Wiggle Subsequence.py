@@ -18,3 +18,14 @@ class Solution:
             if dp[i-1] > 0 and dp[i] < 0 or dp[i-1] < 0 and dp[i] > 0:
                 cur += 1
         return cur
+
+        # Solution 2
+        f = 1
+        d = 1
+        for i in range(1, len(nums)):
+            if nums[i]>nums[i-1]:
+                f = d+1
+            elif nums[i] < nums[i-1]:
+                d = f+1
+        res = max(f, d)
+        return res
